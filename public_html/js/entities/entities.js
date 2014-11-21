@@ -24,6 +24,16 @@ game.PlayerEntity = me.Entity.extend({
     update: function(delta) {
         if (me.input.isKeyPressed("right")) {
             this.body.vel.x += this.body.accel.x * me.timer.tick;
+            
+        if (me.input.isKeyPressed("left"))   
+            // flip the sprite on horizontal axis
+            this.flipX(true);
+            // update the entity velocity
+            this.body.vel.x -= this.body.accel.x * me.timer.tick;
+            // change to the walking animation
+            if (!this.renderable.isCurrentAnimation("smallWalk")) {
+                this.renderable.setCurrentAnimation("smallWalk");
+            }
 
         } else {
             this.body.vel.x = 0;
