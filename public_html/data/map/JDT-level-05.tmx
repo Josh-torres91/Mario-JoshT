@@ -26,14 +26,21 @@
    </properties>
   </tile>
  </tileset>
- <layer name="collision" width="16" height="9" opacity="0.48">
+ <layer name="collision" width="16" height="9">
   <data encoding="base64" compression="zlib">
    eJxjYBgFgxGsBuJ1QLyWAr0MRJixjkIMAM49D5s=
   </data>
  </layer>
- <layer name="background" width="16" height="9">
+ <layer name="background" width="16" height="9" opacity="0.76">
+  <properties>
+   <property name="type" value="solid"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFgxHIAbEwECuQqVcRypYnYIYyhRgAsawDAA==
   </data>
  </layer>
+ <objectgroup name="EnemyEntities">
+  <object name="BadGuy" x="768" y="489.333" width="197.333" height="69.3333"/>
+  <object name="BadGuy" x="841.333" y="490.667" width="216" height="68"/>
+ </objectgroup>
 </map>
