@@ -15,8 +15,8 @@ game.TitleScreen = me.ScreenObject.extend({
             },
             
             draw: function(renderer){
-                this.font.draw(renderer.getContext(),  "Gump: Son of Mario", 450, 130);
-                this.font.draw(renderer.getContext(), "Press ENTER to Play!", 250, 530);
+                this.font.draw(renderer.getContext(),  "Gump: Son of Mario", 350, 130);
+                this.font.draw(renderer.getContext(), "Press ENTER to Play!", 250, 330);
             }
             
         })));
