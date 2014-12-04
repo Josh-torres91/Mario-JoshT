@@ -22,20 +22,24 @@ game.PlayerEntity = me.Entity.extend({
     },
     update: function(delta) {
         if (me.input.isKeyPressed("right")) {
+            this.flipX(false);
             this.body.vel.x += this.body.accel.x * me.timer.tick;
 
         }else if  (me.input.isKeyPressed("left")) {
+            this.flipX(true);
             this.body.vel.x -= this.body.accel.x / me.timer.tick;
         
         }else {
             this.body.vel.x = 0;
         }
         
-        if (me.input.isKeyPressed("up")) {
-            
-            this.body.vel.y -= this.body.accel.y* me.timer.tick;
-        
-        }
+       
+       if(me.input.isKeyPressed('jump')) {
+           if(!this.body.jumping && !this.body.falling)  {
+               this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+               this.body.jumping = true;
+           }
+       }
         
 
         this.body.update(delta);
@@ -113,9 +117,9 @@ game.BadGuy = me.Entity.extend({
     },
     update: function(delta) {
          this.body.update(delta);
-         me.collision.check(this, true.collideHandler.bind(this), true);
+         me.collision.check(this, true, this.collideHandler.bind(this), true);
          
-         if(this,alive){
+         if(this.alive){
              if(this.walkLeft && this.pos.x <= this.startX){
                  this.walkLeft = false;
              }else if(!this.walkLeft && this.pos.x >= this.endX){
