@@ -5,7 +5,7 @@ game.resources = [
      */
     {name: "background-tiles", type: "image", src: "data/img/background-tiles.png"},
     {name: "meta-tiles", type: "image", src: "data/img/meta-tiles.png"},
-    {name: "mario", type: "image", src: "data/img/player1.png"},
+    {name: "mario", type: "image", src: "data/img/Gump.png"},
     {name: "title-screen", type: "image", src: "data/img/Super_Mario_Bros._-_1985_-_Nintendo.jpg"},
     {name: "slime", type: "image", src: "data/img/slime-spritesheet.png"},
     /* Atlases 
