@@ -7,6 +7,11 @@ game.PlayScreen = me.ScreenObject.extend({
         game.data.score = 0;
 
         me.levelDirector.loadLevel("JDT-level-04");
+        /** 
+         * The name of the level in the level director is my first
+         * level, it wouldn't make any sense to start anywhere else.
+         */
+        
 
         this.resetPlayer(0, 1260);
 
