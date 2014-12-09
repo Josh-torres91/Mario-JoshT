@@ -14,10 +14,14 @@ game.PlayerEntity = me.Entity.extend({
 
         this.renderable.addAnimation("idle", [3]);
         this.renderable.addAnimation("bigIdle", [19]);
-        this.renderable.addAnimation("smallWalk", [8, 9, 10, 11, 12, 13 ], 80);
+        this.renderable.addAnimation("smallWalk", [8, 9, 10, 11, 12, 13], 80);
         this.renderable.addAnimation("bigWalk", [14, 15, 16, 17, 18, 19], 80);
         this.renderable.addAnimation("shrink", [0, 1, 2, 3], 80);
         this.renderable.addAnimation("grow", [4, 5, 6, 7], 80);
+        /**
+         * I went back to the old Mario character because the animations were
+         * all there, unlike the custom dude.
+         */
 
 
         this.renderable.setCurrentAnimation("idle");
@@ -25,11 +29,23 @@ game.PlayerEntity = me.Entity.extend({
         this.big = false;
         this.body.setVelocity(5, 20);
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+        /**
+         * The code above allows the camera to follow the character
+         * throughout the map.
+         * @param {type} delta
+         * @returns {Boolean}
+         * I don't ^ know what that is doing there,
+         * I pressed enter and that popped up.
+         */
     },
     update: function(delta) {
 
         if (me.input.isKeyPressed("right")) {
             this.flipX(false);
+            /**
+             * The code above allows the "left" ability to flip in response to
+             * the movement.
+             */
             this.body.vel.x += this.body.accel.x * me.timer.tick;
 
         } else if (me.input.isKeyPressed("left")) {
@@ -44,6 +60,8 @@ game.PlayerEntity = me.Entity.extend({
         if (me.input.isKeyPressed('jump')) {
             if (!this.body.jumping && !this.body.falling) {
                 this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+                //The "max" part of the code allows the player to somoewhat have a gravity
+                // and not allow them to fly like The Man of Steel. :/
                 this.body.jumping = true;
             }
         }
@@ -77,16 +95,14 @@ game.PlayerEntity = me.Entity.extend({
         this._super(me.Entity, "update", [delta]);
         return true;
     },
-    
-    
     collideHandler: function(response) {
         var ydif = this.pos.y - response.b.pos.y;
         console.log(ydif);
 
-        if(response.b.type === 'badguy') {
+        if (response.b.type === 'badguy') {
             if (ydif <= -115) {
                 response.b.alive = false;
-            }else{
+            } else {
                 if (this.big) {
                     this.big = false;
                     this.body.vel.y -= this.body.accel.y * me.timer.tick;
@@ -156,6 +172,7 @@ game.BadGuy = me.Entity.extend({
         this.renderable.setCurrentAnimation("run");
 
         this.body.setVelocity(4, 6);
+        // This group of code give the little slime life.
     },
     update: function(delta) {
         this.body.update(delta);
@@ -199,5 +216,6 @@ game.Mushroom = me.Entity.extend({
 
         me.collision.check(this);
         this.type = "mushroom";
+        // This group of code give the mushroom visibility and size.
     }
 });

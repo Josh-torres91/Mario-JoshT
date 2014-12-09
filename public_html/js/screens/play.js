@@ -11,7 +11,7 @@ game.PlayScreen = me.ScreenObject.extend({
          * The name of the level in the level director is my first
          * level, it wouldn't make any sense to start anywhere else.
          */
-        
+
 
         this.resetPlayer(0, 1260);
 

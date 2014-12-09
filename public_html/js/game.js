@@ -38,7 +38,8 @@ var game = {
         me.pool.register("mario", game.PlayerEntity, true);
         me.pool.register("BadGuy", game.BadGuy);
         me.pool.register("mushroom", game.Mushroom);
-
+        //This code registers all of these different names of things that make up
+        // the game.
         me.pool.register("LevelTrigger", game.LevelTrigger);
 
         me.state.set(me.state.MENU, new game.TitleScreen());
